@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.card {
+  @apply relative flex flex-col justify-center items-center p-2 gap-1 rounded-md shadow-md;
+}
