@@ -1,12 +1,30 @@
 import { Input } from "@/componets/Inputs/Input"
+import { useLogin } from "./hooks";
 
 export const Login = () => {
+    const {
+        formRef,
+        emailRef,
+        passwordRef,
+        disabledBtn,
+        handleFormOnChange,
+        submit
+    } = useLogin()
     return (
-        <form className="relative flex flex-col justify-around items-center" autoComplete="off">
+        <form
+            onChange={handleFormOnChange}
+            onSubmit={submit}
+            ref={formRef}
+            className="relative flex flex-col justify-around items-center peer"
+            autoComplete="off"
+            noValidate
+        >
             <div>
                 <Input
+                    ref={emailRef}
                     type="email"
                     id="email"
+                    name="email"
                     className='invalid:border-red-500! peer'
                     placeholder="Enter your Email"
                     required
@@ -16,17 +34,18 @@ export const Login = () => {
                     message='Invalid Email'
                 />
             </div>
-
             <div>
                 <Input
+                    ref={passwordRef}
                     type="password"
+                    name="password"
                     placeholder="Enter your password"
                     minLength={8}
                     label='Password'
                     message='Short password'
                 />
             </div>
-            <button type="submit">LogIn</button>
+            <button type="submit" disabled={!disabledBtn}>LogIn</button>
         </form>
     )
 }
