@@ -1,5 +1,5 @@
 import type React from "react";
-import style from './style.module.css'
+import clsx from "clsx";
 
 type TCard = {
     children: React.ReactNode,
@@ -9,11 +9,9 @@ type TCard = {
     }
 }
 
-export const Card: React.FC<TCard> = ({ children, sizes }) => {
-    const combinedStyles = `${style.card} ${sizes?.width || ""} ${sizes?.height || ""}`
-    return (
-        <div className={combinedStyles}>
-            {children}
-        </div>
-    )
-}
+const defaultCardCss = "relative flex flex-col justify-center items-center p-2 gap-1 rounded-md shadow-md"
+export const Card: React.FC<TCard> = ({ children, sizes }) => (
+    <div className={clsx(defaultCardCss, sizes?.width, sizes?.height)}>
+        {children}
+    </div>
+);

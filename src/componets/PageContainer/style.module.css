@@ -1,4 +1,0 @@
-.container {
-  @apply relative w-full flex flex-col items-center justify-center;
-  height: 100vh;
-}

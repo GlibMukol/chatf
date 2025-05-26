@@ -1,5 +1,0 @@
-@import "tailwindcss";
-.login {
-  @apply relative flex flex-col justify-around items-center;
-}
-

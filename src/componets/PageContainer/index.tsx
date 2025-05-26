@@ -1,15 +1,12 @@
 import type React from "react";
-import styles from "./style.module.css";
 
 
 type TPageContainer = {
     children: React.ReactNode;
 }
 
-export const PageContainer: React.FC<TPageContainer> = ({ children }) => {
-    return (
-        <div className={styles.container}>
-            {children}
-        </div>
-    )
-}
+export const PageContainer: React.FC<TPageContainer> = ({ children }) => (
+    <div className="relative w-full flex flex-col items-center justify-center h-dvh">
+        {children}
+    </div>
+)

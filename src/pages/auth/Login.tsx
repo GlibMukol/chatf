@@ -1,9 +1,8 @@
-import style from './style.module.css'
 import { Input } from "@/componets/Inputs/Input"
 
 export const Login = () => {
     return (
-        <form className={style.login} autoComplete="off">
+        <form className="relative flex flex-col justify-around items-center" autoComplete="off">
             <div>
                 <Input
                     type="email"

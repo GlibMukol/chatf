@@ -1,7 +1,0 @@
-@import "tailwindcss";
-input {
-  @apply rounded-xs p-1 border-2 border-solid border-blue-50 focus:border-blue-950 hover:border-blue-500 transition delay-150 duration-300;
-}
-label {
-  @apply block;
-}
