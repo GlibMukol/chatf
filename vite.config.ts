@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
@@ -20,6 +21,11 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
   },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './setup.ts'
+  }
 
 
 })

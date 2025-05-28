@@ -1,5 +1,5 @@
 import { Input } from "@/componets/Inputs/Input"
-import { useLogin } from "./hooks";
+import { useLogin } from "./hooks/useLogin";
 
 export const Login = () => {
     const {
@@ -18,6 +18,7 @@ export const Login = () => {
             className="relative flex flex-col justify-around items-center peer"
             autoComplete="off"
             noValidate
+            data-testid="login form"
         >
             <div>
                 <Input
@@ -32,6 +33,7 @@ export const Login = () => {
                     autoComplete="off"
                     label='Email'
                     message='Invalid Email'
+                    data-testid="email"
                 />
             </div>
             <div>
@@ -41,11 +43,14 @@ export const Login = () => {
                     name="password"
                     placeholder="Enter your password"
                     minLength={8}
+                    pattern=".{8,}"
                     label='Password'
                     message='Short password'
+                    data-testid="password"
+                    required
                 />
             </div>
-            <button type="submit" disabled={!disabledBtn}>LogIn</button>
+            <button data-testid="submit" type="submit" disabled={!disabledBtn}>LogIn</button>
         </form>
     )
 }

@@ -1,5 +1,5 @@
 import { useRef, useState, type FormEvent } from "react";
-import { validLoginForm } from "./helpers";
+import { validLoginForm } from "../helpers";
 
 export const useLogin = () => {
     const formRef = useRef(null);
@@ -11,8 +11,8 @@ export const useLogin = () => {
     });
     const submit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        //TODO
-        console.log('formData', e)
+        //TODO need create api for it
+        // console.log('formData', e)
     }
     const handleFormOnChange = () => setDisabledButton(validLoginForm(inputSet))
     return {
