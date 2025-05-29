@@ -1,26 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { Login } from "@/pages/auth/Login"
+import { Login } from "@/pages/auth/Login/Login"
 import { describe, expect, it, beforeEach, vi, afterEach, } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import userEvent, { type UserEvent } from "@testing-library/user-event"
 import { type RefObject } from "react";
 import { validLoginForm } from "@/pages/auth/helpers";
 
-
-
-// vi.mock('./hooks/useLogin.ts', async () => {
-//     const actual = await vi.importActual('./hooks/useLogin.ts');
-//     console.log('actual', actual)
-//     return {
-//         ...actual,
-//         // submit: vi.fn().mockReturnValue()
-//     }
-// });
-
-
-
-
-// const sumbitMock = vi.fn()
 
 const returnValidityStub = (valid = true, isNull = false) => {
     return (isNull ? null : {
@@ -145,9 +130,7 @@ describe("Login Component", () => {
 
     describe("submit button tests", () => {
         let submitButton: HTMLButtonElement;
-        // let useLoginSpy: ReturnType<typeof vi.spyOn>
         beforeEach(() => {
-            // useLoginSpy = vi.spyOn(useLoginModule, 'useLogin')
             submitButton = screen.getByTestId("submit");
         });
 

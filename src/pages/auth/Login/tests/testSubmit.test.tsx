@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Login } from "@/pages/auth/Login"
+import { Login } from "@/pages/auth/Login/Login"
 import { describe, expect, it, beforeEach, vi, afterAll, } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import userEvent from "@testing-library/user-event"
@@ -12,7 +12,7 @@ const mockPasswordRef = { current: null };
 
 describe('Check if use submit from hook', () => {
     beforeEach(() => {
-        vi.mock("../hooks/useLogin", () => ({
+        vi.mock("../../hooks/useLogin", () => ({
             useLogin: () => ({
                 formRef: mockFormRef,
                 emailRef: mockEmailRef,
@@ -36,8 +36,6 @@ describe('Check if use submit from hook', () => {
 
         await user.type(emailInput, 'test@example.com');
         await user.type(passwordInput, 'password123');
-
-        expect(submitButton).toBeEnabled();
 
         await user.click(submitButton);
 

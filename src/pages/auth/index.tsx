@@ -1,6 +1,6 @@
 import { Card } from "@/componets/Card"
 import { PageContainer } from "@/componets/PageContainer"
-import { Login } from "./Login"
+import { Login } from "./Login/Login"
 
 export const AuthContainer = () => {
     return (
