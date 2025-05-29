@@ -1,18 +1,21 @@
 import { render, screen } from "@testing-library/react";
-import { Login } from "./Login"
+import { Login } from "@/pages/auth/Login"
 import { describe, expect, it, beforeEach, vi, afterEach, } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import userEvent, { type UserEvent } from "@testing-library/user-event"
 import { type RefObject } from "react";
-import { validLoginForm } from "./helpers";
-vi.mock('./hooks/useLogin.ts', async () => {
-    const actual = await vi.importActual('./hooks/useLogin.ts');
-    console.log('actual', actual)
-    return {
-        ...actual,
-        // submit: vi.fn().mockReturnValue()
-    }
-});
+import { validLoginForm } from "@/pages/auth/helpers";
+
+
+
+// vi.mock('./hooks/useLogin.ts', async () => {
+//     const actual = await vi.importActual('./hooks/useLogin.ts');
+//     console.log('actual', actual)
+//     return {
+//         ...actual,
+//         // submit: vi.fn().mockReturnValue()
+//     }
+// });
 
 
 

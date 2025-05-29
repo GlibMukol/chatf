@@ -1,5 +1,5 @@
 import { Input } from "@/componets/Inputs/Input"
-import { useLogin } from "./hooks/useLogin";
+import { useLogin } from '@/pages/auth/hooks/useLogin'
 
 export const Login = () => {
     const {
