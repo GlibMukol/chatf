@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Login snapshots > should correct render 1`] = `
+<form
+  autocomplete="off"
+  class="relative flex flex-col justify-around items-center peer"
+  data-testid="login form"
+  novalidate=""
+>
+  <div>
+    <label
+      for="email"
+    >
+      Email
+    </label>
+    <input
+      autocomplete="off"
+      class="invalid:border-red-500! peer"
+      data-testid="email"
+      id="email"
+      label="Email"
+      message="Invalid Email"
+      name="email"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$"
+      placeholder="Enter your Email"
+      required=""
+      type="email"
+    />
+    <p
+      class="invisible text-red-500 text-sm peer-focus:invisible peer-invalid:visible transition delay-300 duration-3"
+    >
+      Invalid Email
+    </p>
+  </div>
+  <div>
+    <label>
+      Password
+    </label>
+    <input
+      class="invalid:border-red-500! peer"
+      data-testid="password"
+      label="Password"
+      message="Short password"
+      minlength="8"
+      name="password"
+      pattern=".{8,}"
+      placeholder="Enter your password"
+      required=""
+      type="password"
+    />
+    <p
+      class="invisible text-red-500 text-sm peer-focus:invisible peer-invalid:visible transition delay-300 duration-3"
+    >
+      Short password
+    </p>
+  </div>
+  <button
+    data-testid="submit"
+    disabled=""
+    type="submit"
+  >
+    LogIn
+  </button>
+</form>
+`;
