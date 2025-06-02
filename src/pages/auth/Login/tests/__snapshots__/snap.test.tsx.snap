@@ -33,12 +33,15 @@ exports[`Login snapshots > should correct render 1`] = `
     </p>
   </div>
   <div>
-    <label>
+    <label
+      for="password"
+    >
       Password
     </label>
     <input
       class="invalid:border-red-500! peer"
       data-testid="password"
+      id="password"
       label="Password"
       message="Short password"
       minlength="8"

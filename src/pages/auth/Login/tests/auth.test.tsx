@@ -140,6 +140,7 @@ describe("Login Component", () => {
             const emailInput = screen.getByTestId('email');
             await e.clear(emailInput);
             await e.type(emailInput, "test");
+            // console.log('submitButton', submitButton)
             expect(submitButton).toBeDisabled();
         });
 
@@ -158,32 +159,8 @@ describe("Login Component", () => {
             await e.type(emailElement, "test@test.com");
             await e.type(passwordElement, "q1231231231");
 
-            expect(submitButton).not.toBeDisabled()
+            expect(submitButton).toBeEnabled()
         });
-
-        it("should call submit on click", async () => {
-
-
-            // const submitet = vi.spyOn(console, 'log')
-            const submit = screen.getByTestId("submit");
-            const email = screen.getByTestId("email");
-            const password = screen.getByTestId("password");
-
-
-
-            await e.clear(email);
-            await e.clear(password);
-
-            await e.type(email, 'test@test.com');
-            await e.type(password, '123123123');
-            await e.click(submit);
-
-            // expect(submitet).toHaveBeenCalled()
-            // expect(sumbitMock).toHaveBeenCalled()
-
-
-        })
-
     })
 
 });

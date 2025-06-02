@@ -41,6 +41,7 @@ export const Login = () => {
                     ref={passwordRef}
                     type="password"
                     name="password"
+                    id="password"
                     placeholder="Enter your password"
                     minLength={8}
                     pattern=".{8,}"
@@ -50,7 +51,7 @@ export const Login = () => {
                     required
                 />
             </div>
-            <button data-testid="submit" type="submit" disabled={!disabledBtn}>LogIn</button>
+            <button data-testid="submit" type="submit" disabled={disabledBtn}>LogIn</button>
         </form>
     )
 }
