@@ -125,7 +125,31 @@ describe("Login Component", () => {
         it("should be valid with correct length", async () => {
             await e.type(passwordInput, '12345678');
             expect(passwordInput).toBeValid()
-        })
+        });
+
+
+        it("should be type password when init", () => {
+            expect(passwordInput.type).toEqual("password")
+        });
+
+        it("should be show password icon be n document", () => {
+            const showPwd = screen.getByTestId("lueye");
+            expect(showPwd).toBeInTheDocument();
+        });
+
+        it("should change input type by icon click", async () => {
+            const toogleIcon = screen.getByTestId("toogle");
+            await e.click(toogleIcon);
+            expect(passwordInput.type).toEqual("text")
+        });
+
+        it("should hide password icon be in document when toogle clicked", async () => {
+            const toogleIcon = screen.getByTestId("toogle");
+            await e.click(toogleIcon);
+            const hidePwd = screen.getByTestId("lueeyeclosed");
+            expect(hidePwd).toBeInTheDocument();
+        });
+
     });
 
     describe("submit button tests", () => {
@@ -140,7 +164,6 @@ describe("Login Component", () => {
             const emailInput = screen.getByTestId('email');
             await e.clear(emailInput);
             await e.type(emailInput, "test");
-            // console.log('submitButton', submitButton)
             expect(submitButton).toBeDisabled();
         });
 
@@ -151,7 +174,7 @@ describe("Login Component", () => {
             expect(submitButton).toBeDisabled();
         });
 
-        it("shoul be enabled if input are valid", async () => {
+        it("should be enabled if input are valid", async () => {
             const [emailElement, passwordElement] = ['email', "password"].map(item => screen.getByTestId(item));
             await e.clear(emailElement);
             await e.clear(passwordElement);
@@ -161,7 +184,9 @@ describe("Login Component", () => {
 
             expect(submitButton).toBeEnabled()
         });
-    })
+    });
+
+
 
 });
 

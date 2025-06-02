@@ -1,5 +1,6 @@
 import { Input } from "@/componets/Inputs/Input"
 import { useLogin } from '@/pages/auth/hooks/useLogin'
+import { LuEye, LuEyeClosed } from "react-icons/lu";
 
 export const Login = () => {
     const {
@@ -8,12 +9,14 @@ export const Login = () => {
         passwordRef,
         disabledBtn,
         handleFormOnChange,
+        showPwd,
+        handleShowPwd,
         submit
     } = useLogin()
     return (
         <form
-            onChange={handleFormOnChange}
             onSubmit={submit}
+            onChange={handleFormOnChange}
             ref={formRef}
             className="relative flex flex-col justify-around items-center peer"
             autoComplete="off"
@@ -36,10 +39,10 @@ export const Login = () => {
                     data-testid="email"
                 />
             </div>
-            <div>
+            <div className="relative">
                 <Input
                     ref={passwordRef}
-                    type="password"
+                    type={showPwd ? "text" : "password"}
                     name="password"
                     id="password"
                     placeholder="Enter your password"
@@ -50,6 +53,13 @@ export const Login = () => {
                     data-testid="password"
                     required
                 />
+                <span
+                    data-testid="toogle"
+                    onClick={handleShowPwd}
+                    className="absolute right-2 top-8 cursor-pointer"
+                >
+                    {showPwd ? <LuEyeClosed data-testid="lueeyeclosed" /> : <LuEye data-testid="lueye" />}
+                </span>
             </div>
             <button data-testid="submit" type="submit" disabled={disabledBtn}>LogIn</button>
         </form>

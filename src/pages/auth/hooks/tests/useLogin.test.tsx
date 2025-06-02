@@ -1,8 +1,14 @@
-import { render, renderHook, type RenderHookResult } from "@testing-library/react";
+import { renderHook, type RenderHookResult, act } from "@testing-library/react";
 import { it, describe, expect, beforeEach, afterEach, vi } from "vitest";
-import { Login } from "@/pages/auth/Login/Login"
 import { useLogin } from "@/pages/auth/hooks/useLogin";
 import '@testing-library/jest-dom/vitest'
+
+
+const createMockINput = (isValid: boolean): HTMLInputElement => ({
+    validity: {
+        valid: isValid
+    }
+}) as unknown as HTMLInputElement;
 
 describe("useLogin hook", () => {
     let hook: RenderHookResult<ReturnType<typeof useLogin>, unknown>;
@@ -14,41 +20,51 @@ describe("useLogin hook", () => {
     afterEach(vi.clearAllMocks);
 
     it("should return all props", () => {
-        const keys = ['formRef', "emailRef", "passwordRef", "disabledBtn", "handleFormOnChange", "submit"];
+        const keys = ['formRef', "emailRef", "passwordRef", "handleFormOnChange", "disabledBtn", "showPwd", "submit"];
         const { result } = hook;
         expect(keys.every(key => key in result.current)).toBe(true);
     });
 
     it("should return currect interface", () => {
         const { result } = hook;
-        const refStab = { current: null }
+        const refStab = { current: null };
         expect(result.current).toEqual(
             expect.objectContaining({
                 formRef: expect.objectContaining(refStab),
                 emailRef: expect.objectContaining(refStab),
                 passwordRef: expect.objectContaining(refStab),
                 disabledBtn: expect.any(Boolean),
-                handleFormOnChange: expect.any(Function),
-                submit: expect.any(Function)
+                submit: expect.any(Function),
+                showPwd: expect.any(Boolean),
+                handleShowPwd: expect.any(Function),
+                handleFormOnChange: expect.any(Function)
             })
         )
     });
 
     it("should submit be disabled when init", () => {
         const { result } = hook;
-        console.log('result.current', result.current)
-        expect(result.current.disabledBtn).toBe(true)
+        expect(result.current.disabledBtn).toBe(true);
     });
 
-    it("should submit be dissabled when password no valid", () => {
-        const { result } = hook;
-        result.current.emailRef = {
-            current: {
-                validity: {
-                    valid: true
-                }
-            } as HTMLInputElement
-        };
-        expect(result.current.disabledBtn).toEqual(true);
-    })
+    it.each([
+        [true, false, true],
+        [false, true, true],
+        [true, true, false]
+    ])(
+        'if email volid %s and password valid %s should by disabbled %s',
+        (email, password, isValid) => {
+            const { result } = hook;
+            act(() => {
+                result.current.emailRef.current = createMockINput(email);
+                result.current.handleFormOnChange();
+                result.current.passwordRef.current = createMockINput(password);
+                result.current.handleFormOnChange();
+            });
+
+            act(() => {
+                expect(result.current.disabledBtn).toEqual(isValid);
+            });
+        }
+    );
 })

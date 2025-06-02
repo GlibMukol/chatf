@@ -32,7 +32,9 @@ exports[`Login snapshots > should correct render 1`] = `
       Invalid Email
     </p>
   </div>
-  <div>
+  <div
+    class="relative"
+  >
     <label
       for="password"
     >
@@ -56,6 +58,32 @@ exports[`Login snapshots > should correct render 1`] = `
     >
       Short password
     </p>
+    <span
+      class="absolute right-2 top-8 cursor-pointer"
+      data-testid="toogle"
+    >
+      <svg
+        data-testid="lueye"
+        fill="none"
+        height="1em"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+        />
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+      </svg>
+    </span>
   </div>
   <button
     data-testid="submit"

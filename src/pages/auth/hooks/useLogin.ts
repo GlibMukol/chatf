@@ -6,21 +6,23 @@ export const useLogin = () => {
     const emailRef = useRef<HTMLInputElement | null>(null);
     const passwordRef = useRef<HTMLInputElement | null>(null);
     const inputSet = [emailRef, passwordRef]
+    const [showPwd, setShowPwd] = useState(false)
     const [disabledBtn, setDisabledButton] = useState(() => {
         return !validLoginForm(inputSet)
     });
     const submit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        //TODO need create api for it
-        // console.log('formData', e)
-    }
-    const handleFormOnChange = () => setDisabledButton(!validLoginForm(inputSet))
+    };
+    const handleShowPwd = () => setShowPwd(value => !value);
+    const handleFormOnChange = () => (setDisabledButton(!validLoginForm(inputSet)));
     return {
         formRef,
         emailRef,
         passwordRef,
         disabledBtn,
         handleFormOnChange,
+        showPwd,
+        handleShowPwd,
         submit
     }
 }
